@@ -20,6 +20,7 @@ def crypto_to_crypto(from_crypt, to_crypt):
     return fr/to
 
 def fiat_to_crypto(fiat, crypto):
+    if fiat == "USD": return 1/get_crypto_price_in_usd(crypto)
     return get_fiat_price_is(fiat, "USD") / get_crypto_price_in_usd(crypto)
 
 @app.route('/exchange', methods=['GET'])
