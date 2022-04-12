@@ -2,6 +2,7 @@ import flask
 from flask import request, jsonify
 from functions import get_crypto_price_in_usd, get_fiat_price_is
 from logger import _log_entry
+import sys
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -42,4 +43,4 @@ def home():
             return str(round(get_fiat_price_is(from_c, to_c), 4))
         
 
-app.run()
+app.run(port = sys.argv[-1])
